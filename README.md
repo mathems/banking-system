@@ -1,4 +1,3 @@
-
 # Banking System Service
 
 This project is a simple bank service application designed to manage customer accounts and transactions. The application provides APIs for creating customer accounts, processing transactions, and viewing account details. It is built with **Node.js**, and uses **TypeScript** for type safety.
