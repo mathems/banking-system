@@ -21,7 +21,7 @@ export class BankService {
     return customer.check();
   }
 
-  transefer(from: string, to: string, amount: number) {
+  transfer(from: string, to: string, amount: number) {
     const fromCustomer = this.getCustomer(from);
     const toCustomer = this.getCustomer(to);
 
