@@ -6,7 +6,7 @@ This project is a simple bank service application designed to manage customer ac
 
 - Create new bank accounts for customers.
 - Perform deposits, withdrawals, and transfers between accounts.
-- View account balances and transaction history.
+- View account balances.
 
 ## Getting Started via Testing mode
 
