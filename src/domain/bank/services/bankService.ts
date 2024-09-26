@@ -15,9 +15,29 @@ export class BankService {
 
   checkCustomerBalance(name: string): string | undefined {
     const customer = this.getCustomer(name);
-    if (!customer){
-        throw new Error('Customer not found')
+    if (!customer) {
+      throw new Error("Customer not found");
     }
-    return customer.check()
+    return customer.check();
+  }
+
+  transefer(from: string, to: string, amount: number) {
+    const fromCustomer = this.getCustomer(from);
+    const toCustomer = this.getCustomer(to);
+
+    if (!fromCustomer || !toCustomer) {
+      throw new Error("Customer not found");
+    }
+
+    fromCustomer.withdraw(amount);
+    toCustomer.deposit(amount);
+  }
+
+  getTotalBalance(): number | string {
+    const completeBalance = Array.from(this.customers.values()).reduce(
+      (acc, customer) => acc + customer.balance,
+      0
+    );
+    return completeBalance === 0 ? "You are bankrupt" : completeBalance;
   }
 }
