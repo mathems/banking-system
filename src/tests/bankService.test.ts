@@ -1,8 +1,10 @@
 import { expect, test, describe, beforeEach } from 'vitest';
 import { BankService } from '../domain/bank/services/bankService';
+import { Customer } from '../domain/customer/customer';
 
 describe('BankService class', () => {
     let bankService: BankService;
+    let customer: Customer;
   
     beforeEach(() => {
       bankService = new BankService();
@@ -44,4 +46,17 @@ describe('BankService class', () => {
       const totalBalance = bankService.getTotalBalance();
       expect(totalBalance).toBe(1585);
     });
+
+    test('should return "You are bankrupt" if all customers have zero balance', () => {
+        const andrew = bankService.getCustomer('Andrew');
+        const daniel = bankService.getCustomer('Daniel');
+        
+        if (andrew && daniel) {
+          andrew.withdraw(andrew.balance);
+          daniel.withdraw(daniel.balance);
+        }
+      
+        const totalBalance = bankService.getTotalBalance();
+        expect(totalBalance).toBe('You are bankrupt');
+      });
   });
